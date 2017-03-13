@@ -21,34 +21,92 @@ public class PlayerController : MonoBehaviour {
 
 	void CanIdle()
 	{
-
+		if (isIdle)
+		{
+			if (Input.GetKeyDown(KeyCode.UpArrow)     || 
+				Input.GetKeyDown(KeyCode.DownArrow)   ||
+				Input.GetKeyDown(KeyCode.LeftArrow)   ||
+				Input.GetKeyDown(KeyCode.RightArrow) 
+				)
+			{
+				CheckIfCanMove();
+			}
+		}
 	}
 
 	void CheckIfCanMove()
 	{
+		// raycast  - find if there is a collider box in front of player
+		RaycastHit hit;
 
+		Physics.Raycast(transform.position, -chick.transform.up, out hit, colliderDistCheck);
+
+		Debug.DrawRay(transform.position, -chick.transform.up * colliderDistCheck, Color.red, 2.0f);
+
+		if (hit.collider == null)
+		{
+			SetMove();
+		} else
+		{
+			if (hit.collider.tag == "collider")
+			{
+				Debug.Log("Hit something with collider tag.");
+			} else
+			{
+				SetMove();
+			}
+		}
 	}
 
 	void SetMove()
 	{
-
+		Debug.Log("Hit nothing.  Keep moving.");
+		isIdle		= false;
+		isMoving	= true;
+		jumpStart	= true;
 	}
 
 	void CanMove()
 	{
-		if (Input.GetKeyDown(KeyCode.UpArrow)) {
-			Moving(new Vector3( transform.position.x, transform.position.y, transform.position.z + moveDistance));
+		if (isMoving)
+		{
+			if (Input.GetKeyUp(KeyCode.UpArrow))
+			{
+				Moving(new Vector3(transform.position.x, transform.position.y, transform.position.z + moveDistance));
+				SetMoveForwardState(); 
+			}
+			else if (Input.GetKeyUp(KeyCode.DownArrow))
+			{
+				Moving(new Vector3(transform.position.x, transform.position.y, transform.position.z - moveDistance));
+				// SetMoveForwardState();
+			}
+			else if (Input.GetKeyUp(KeyCode.LeftArrow))
+			{
+				Moving(new Vector3(transform.position.x - moveDistance, transform.position.y, transform.position.z));
+				// SetMoveForwardState();
+			}
+			else if (Input.GetKeyUp(KeyCode.RightArrow))
+			{
+				Moving(new Vector3(transform.position.x + moveDistance, transform.position.y, transform.position.z));
+				// SetMoveForwardState();
+			}
 		}
+
 	}
 
 	void Moving( Vector3 pos)
 	{
-		LeanTween.move(this.gameObject, pos, moveTime);
+		isIdle = false;
+		isMoving = false;
+		isJumping = true;
+		jumpStart = false;
+		LeanTween.move(gameObject, pos, moveTime).setOnComplete( MoveComplete );
 	}
 
 	void MoveComplete()
 	{
-
+		isJumping = false;
+		isIdle = true;
 	}
 
 	void SetMoveForwardState()
@@ -63,11 +121,11 @@ public class PlayerController : MonoBehaviour {
 
 	void IsVisable()
 	{
-		if (GetComponent().isVisible)
+		if (GetComponent<Renderer>().isVisible)
 		{
 			isVisable = true;
 		}
-		if(!GetComponent().isVisible && isVisable)
+		if(!GetComponent<Renderer>().isVisible && isVisable)
 		{
 			Debug.Log("Player off screen. Apply Gothit()");
 			GotHit();
@@ -81,5 +139,6 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		CanMove();
+		CanIdle();
 	}
 }
