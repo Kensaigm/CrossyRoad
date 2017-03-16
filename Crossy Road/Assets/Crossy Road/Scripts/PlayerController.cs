@@ -116,29 +116,48 @@ public class PlayerController : MonoBehaviour {
 
 	public void GotHit()
 	{
+		isDead = true;
 
+		ParticleSystem.EmissionModule em = particle.emission;
+		em.enabled = true;
+
+		// Manager -> GameOver()
 	}
 
 	void IsVisable()
 	{
-		if (GetComponent<Renderer>().isVisible)
+		if (renderer.isVisible)
 		{
 			isVisable = true;
 		}
-		if(!GetComponent<Renderer>().isVisible && isVisable)
+
+		if ( !renderer.isVisible && isVisable)
 		{
-			Debug.Log("Player off screen. Apply Gothit()");
+			Debug.Log("Player off screen. Apply GotHit()");
+
 			GotHit();
 		}
+	//	if (GetComponent<Renderer>().isVisible)
+	//	{
+	//		isVisable = true;
+	//	}
+	//	if(!GetComponent<Renderer>().isVisible && isVisable)
+	//	{
+	//		Debug.Log("Player off screen. Apply Gothit()");
+	//		GotHit();
+	//	}
 	}
 	// Use this for initialization
 	void Start () {
-		
+		renderer = chick.GetComponent<Renderer>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		//TODO:  Manager -> CanPlay()
+		if (isDead) return;
 		CanMove();
 		CanIdle();
+		IsVisable();
 	}
 }
