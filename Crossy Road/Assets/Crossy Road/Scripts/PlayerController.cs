@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour {
 
 	public void GotHit()
 	{
+		isIdle = false;
 		isDead = true;
 
 		ParticleSystem.EmissionModule em = particle.emission;

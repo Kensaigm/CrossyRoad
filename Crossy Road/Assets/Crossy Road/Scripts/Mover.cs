@@ -37,6 +37,36 @@ public class Mover : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter( Collider other) { }
-	void OnTriggerExit(Collider other) { }
+	void OnTriggerEnter( Collider other) {
+		if (other.tag == "Player")
+		{
+			Debug.Log("mover trigger enter player.");
+
+			if (parentOnTrigger) {
+				Debug.Log("Enter: Parent to me");
+
+				other.transform.parent = transform;
+			}
+			if (hitBoxOnTrigger) {
+				Debug.Log("Enter: Gothit. Game over.");
+
+				other.GetComponent<PlayerController>().GotHit();
+			}
+		}
+	}
+	void OnTriggerExit(Collider other) {
+		if (other.tag == "Player")
+		{
+			Debug.Log("mover trigger exit player.");
+
+			if (parentOnTrigger) {
+				Debug.Log(" Exit. ");
+				other.transform.parent = null;
+			}
+			if (hitBoxOnTrigger) {
+				Debug.Log(" Exit. But dead, this should not happen.");
+				// TODO:  Make sure animation state is Dead only.
+			}
+		}
+	}
 }
