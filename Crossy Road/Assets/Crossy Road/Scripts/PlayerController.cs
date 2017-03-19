@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour {
 
 	void SetMoveForwardState()
 	{
-
+		Manager.instance.UpdateDistanceCount();
 	}
 
 	public void GotHit()
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour {
 		ParticleSystem.EmissionModule em = particle.emission;
 		em.enabled = true;
 
-		// Manager -> GameOver()
+		Manager.instance.GameOver();
 	}
 
 	void IsVisable()
@@ -138,15 +138,6 @@ public class PlayerController : MonoBehaviour {
 
 			GotHit();
 		}
-	//	if (GetComponent<Renderer>().isVisible)
-	//	{
-	//		isVisable = true;
-	//	}
-	//	if(!GetComponent<Renderer>().isVisible && isVisable)
-	//	{
-	//		Debug.Log("Player off screen. Apply Gothit()");
-	//		GotHit();
-	//	}
 	}
 	// Use this for initialization
 	void Start () {
@@ -155,7 +146,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//TODO:  Manager -> CanPlay()
+		if (!Manager.instance.CanPlay()) return;
 		if (isDead) return;
 		CanMove();
 		CanIdle();
