@@ -12,7 +12,7 @@ public class Coin : MonoBehaviour {
 		{
 			Debug.Log("Player picked up a coin!");
 
-			// TODO: Manager -> upade coin count
+			Manager.instance.UpdateCoinCount(coinValue);
 
 			Destroy(gameObject);
 		}
