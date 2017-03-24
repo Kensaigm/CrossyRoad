@@ -389,7 +389,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 160172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d713bb2e1275745a63218fd889f350, type: 3}
+  m_Script: {fileID: 11500000, guid: fc7572b76d955c44297b66a1e651d02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {fileID: 452556}
@@ -399,7 +399,7 @@ MonoBehaviour:
   speedMax: 4
   useSpawnPlacement: 1
   spawnCountMin: 4
-  spawnCountMax: 12
+  spawnCountMax: 20
   item: {fileID: 0}
   goLeft: 0
   spawnLeftPos: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 154018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d713bb2e1275745a63218fd889f350, type: 3}
+  m_Script: {fileID: 11500000, guid: fc7572b76d955c44297b66a1e651d02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {fileID: 408374}
@@ -422,7 +422,7 @@ MonoBehaviour:
   speedMax: 4
   useSpawnPlacement: 1
   spawnCountMin: 4
-  spawnCountMax: 12
+  spawnCountMax: 20
   item: {fileID: 0}
   goLeft: 0
   spawnLeftPos: 0
@@ -435,14 +435,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 133920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d713bb2e1275745a63218fd889f350, type: 3}
+  m_Script: {fileID: 11500000, guid: fc7572b76d955c44297b66a1e651d02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {fileID: 431240}
   delayMin: 1.5
   delayMax: 5
-  speedMin: 2
-  speedMax: 6
+  speedMin: 1
+  speedMax: 4
   useSpawnPlacement: 0
   spawnCountMin: 4
   spawnCountMax: 20
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 119124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d713bb2e1275745a63218fd889f350, type: 3}
+  m_Script: {fileID: 11500000, guid: fc7572b76d955c44297b66a1e651d02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {fileID: 428044}
@@ -468,7 +468,7 @@ MonoBehaviour:
   speedMax: 4
   useSpawnPlacement: 1
   spawnCountMin: 4
-  spawnCountMax: 12
+  spawnCountMax: 20
   item: {fileID: 0}
   goLeft: 0
   spawnLeftPos: 0
@@ -481,14 +481,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 105634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d713bb2e1275745a63218fd889f350, type: 3}
+  m_Script: {fileID: 11500000, guid: fc7572b76d955c44297b66a1e651d02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {fileID: 415832}
   delayMin: 1.5
   delayMax: 5
-  speedMin: 2
-  speedMax: 6
+  speedMin: 1
+  speedMax: 4
   useSpawnPlacement: 0
   spawnCountMin: 4
   spawnCountMax: 20
@@ -504,14 +504,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 107064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d713bb2e1275745a63218fd889f350, type: 3}
+  m_Script: {fileID: 11500000, guid: fc7572b76d955c44297b66a1e651d02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {fileID: 430880}
   delayMin: 1.5
   delayMax: 5
-  speedMin: 2
-  speedMax: 6
+  speedMin: 1
+  speedMax: 4
   useSpawnPlacement: 0
   spawnCountMin: 4
   spawnCountMax: 20
@@ -527,23 +527,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 175074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b681f6982b6911a4a97710ae1a19a3ae, type: 3}
+  m_Script: {fileID: 11500000, guid: fc7572b76d955c44297b66a1e651d02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
+  delayMin: 1.5
+  delayMax: 5
+  speedMin: 1
+  speedMax: 4
+  useSpawnPlacement: 0
+  spawnCountMin: 4
+  spawnCountMax: 20
+  item: {fileID: 0}
   goLeft: 0
-  goRight: 0
-  items:
-  - {fileID: 128730, guid: 39a7e941a64fb034caae3c6c80804ffc, type: 2}
-  - {fileID: 121994, guid: 41387607d4f8d9e44a9e813c776943d4, type: 2}
-  - {fileID: 124906, guid: 4195b4ff6d0a23f42ad9b7dbe76a33e3, type: 2}
-  - {fileID: 110210, guid: 8dd2343005dbd8b469e430e4fe7caeeb, type: 2}
-  - {fileID: 172972, guid: 9c53222ecfac6ea429120bfdda9abcd7, type: 2}
-  spawnersLeft:
-  - {fileID: 11441938}
-  - {fileID: 11438656}
-  spawnersRight:
-  - {fileID: 11476534}
-  - {fileID: 11426176}
+  spawnLeftPos: 0
+  spawnRightPos: 0
 --- !u!114 &11476534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -552,14 +550,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 117150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d713bb2e1275745a63218fd889f350, type: 3}
+  m_Script: {fileID: 11500000, guid: fc7572b76d955c44297b66a1e651d02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {fileID: 412934}
   delayMin: 1.5
   delayMax: 5
-  speedMin: 2
-  speedMax: 6
+  speedMin: 1
+  speedMax: 4
   useSpawnPlacement: 0
   spawnCountMin: 4
   spawnCountMax: 20
@@ -575,7 +573,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 187834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d713bb2e1275745a63218fd889f350, type: 3}
+  m_Script: {fileID: 11500000, guid: fc7572b76d955c44297b66a1e651d02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {fileID: 449998}
@@ -585,7 +583,7 @@ MonoBehaviour:
   speedMax: 4
   useSpawnPlacement: 1
   spawnCountMin: 4
-  spawnCountMax: 12
+  spawnCountMax: 20
   item: {fileID: 0}
   goLeft: 0
   spawnLeftPos: 0

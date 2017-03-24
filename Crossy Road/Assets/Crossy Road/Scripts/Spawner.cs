@@ -35,31 +35,66 @@ public class Spawner : MonoBehaviour {
 	{
 		if (useSpawnPlacement)
 		{
-
+			return new Vector3(Random.Range(spawnLeftPos, spawnRightPos), startPos.position.y, startPos.position.z);
 		} else
 		{
-
+			return startPos.position;
 		}
-
-		return Vector3.zero;
 	}
 
 	void SpawnItem()
 	{
 		// GameObject Instantiate Placement, Posision, Direction
+		Debug.Log("Spawn Item " + item.name.ToString());
 		GameObject obj = Instantiate(item) as GameObject;
 
 		obj.transform.position = GetSpawnPosition();
 
+		float direction = 0.0f;
+		if (goLeft)
+		{
+			direction = 180f;
+		}
+
+		if (!useSpawnPlacement)
+		{
+			obj.GetComponent<Mover>().speed = speed;
+			obj.transform.rotation = obj.transform.rotation * Quaternion.Euler(0, direction, 0);
+		}
+
+		
 	}
 
 	// Use this for initialization
 	void Start () {
-		// Loop through GameObject
+		// Setup GameObject by type
+		if (useSpawnPlacement)
+		{
+			int spawnCount = Random.Range(spawnCountMin, spawnCountMax);
+
+			for (int i = 0; i < spawnCount; i++)
+			{
+				SpawnItem();
+			}
+
+		} else
+		{
+			speed = Random.Range(speedMin, speedMax);
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		// Loop
+		// Loop by type
+		if (useSpawnPlacement) return;
+
+		if (Time.time > lastTime + delayTime)
+		{
+			lastTime = Time.time;
+
+			delayTime = Random.Range(delayMin, delayMax);
+
+			SpawnItem();
+		}
 	}
 }
