@@ -7,10 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour {
 
+	// Testing
+	public int levelCount = 50;
+
 	public Text coin = null;
 	public Text distance = null;
 	public Camera camera = null;
 	public GameObject guiGameOver = null;
+	public LevelGenerator levelGenerator = null;
 
 	private int currentCoins = 0;
 	private int currentDistance = 0;
@@ -48,6 +52,7 @@ public class Manager : MonoBehaviour {
 		distance.text = currentDistance.ToString();
 
 		// TODO:  generate new level piece here
+		levelGenerator.RandomGenerator();
 	}
 
 	public bool CanPlay()
@@ -89,7 +94,10 @@ public class Manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		// TODO:  Level generator start up.
+		for (int i = 0; i < levelCount; i++)
+		{
+			levelGenerator.RandomGenerator();
+		}
 	}
 	
 	// Update is called once per frame

@@ -16,15 +16,37 @@ public class LevelGenerator : MonoBehaviour {
 
 	public void RandomGenerator()
 	{
+		rndRange = Random.Range(0, platform.Count);
 
+		for (int i = 0; i < platform.Count; i++)
+		{
+			CreateLevelObject(platform[i], height[i], i);
+		}
 
 
 	}
 
 	public void CreateLevelObject (GameObject obj, float height, int value )
 	{
+		// Example:
+		// GameObject go = Instantiate(obj) as GameObject;
 
+		if (rndRange == value)
+		{
+			GameObject go = Instantiate(obj) as GameObject;
 
+			float offset = lastPos + (lastScale * 0.5f);
+			offset += (go.transform.localScale.z) * 0.5f;
+
+			Vector3 pos = new Vector3(0, height, offset);
+
+			go.transform.position = pos;
+
+			lastPos = go.transform.position.z;
+			lastScale = go.transform.localScale.z;
+
+			go.transform.parent = transform;
+		}
 
 	}
 

@@ -1165,7 +1165,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 32
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1460,6 +1460,60 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1543907146}
+--- !u!1 &1610683090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1610683091}
+  - component: {fileID: 1610683092}
+  m_Layer: 0
+  m_Name: LevelGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1610683091
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1610683090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1610683092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1610683090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa1d6ace95221f49b0a6f593d891891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform:
+  - {fileID: 139162, guid: ce982e585b9788144ba6154129f84b06, type: 2}
+  - {fileID: 127870, guid: a9a9860f534b42d499243b587e3b3e03, type: 2}
+  - {fileID: 135800, guid: 82d9c4adfc0d40b49ad4a7dd0b298b9a, type: 2}
+  - {fileID: 160302, guid: 73c5604e817fc0a44a46505ca4499d3a, type: 2}
+  - {fileID: 173304, guid: d73cba9fda67c514a9f5de55b68877ab, type: 2}
+  - {fileID: 139206, guid: 508940e8e0a497243b7dc9f78fc61cf8, type: 2}
+  height:
+  - -0.65
+  - -0.55
+  - -0.55
+  - -0.5
+  - -0.5
+  - -0.55
 --- !u!1 &1671682687 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 114832, guid: cb5de0a3b616ad842846549e9afa582e, type: 2}
@@ -1772,7 +1826,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e0f282eb3746f46be6cf78ab2a6bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelCount: 50
   coin: {fileID: 1212672489}
   distance: {fileID: 1543907149}
   camera: {fileID: 453958718}
   guiGameOver: {fileID: 9564749}
+  levelGenerator: {fileID: 1610683092}
