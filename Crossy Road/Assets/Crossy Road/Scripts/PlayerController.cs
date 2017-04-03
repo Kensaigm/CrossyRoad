@@ -32,17 +32,20 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (isIdle)
 		{
-			if (Input.GetKeyDown(KeyCode.UpArrow)     || 
-				Input.GetKeyDown(KeyCode.DownArrow)   ||
-				Input.GetKeyDown(KeyCode.LeftArrow)   ||
-				Input.GetKeyDown(KeyCode.RightArrow) 
-				)
-			{
-				CheckIfCanMove();
+			if (Input.GetKeyDown(KeyCode.UpArrow)    ) { CheckIfIdle(270, 0, 0)  ; }
+			if (Input.GetKeyDown(KeyCode.DownArrow)  ) { CheckIfIdle(270, 180, 0); }
+			if (Input.GetKeyDown(KeyCode.LeftArrow)  ) { CheckIfIdle(270, -90, 0) ; }
+			if (Input.GetKeyDown(KeyCode.RightArrow) ) { CheckIfIdle(270, 90, 0) ; }		
+		}		
+	}
 
-				PlayAudioClip(audioIdle1);
-			}
-		}
+	void CheckIfIdle(float x, float y, float z)
+	{
+		chick.transform.rotation = Quaternion.Euler(x, y, z);
+
+		CheckIfCanMove();
+		int a = Random.Range(0, 12);
+		if (a < 4 ) PlayAudioClip(audioIdle1);
 	}
 
 	void CheckIfCanMove()
@@ -62,6 +65,7 @@ public class PlayerController : MonoBehaviour {
 			if (hit.collider.tag == "collider")
 			{
 				Debug.Log("Hit something with collider tag.");
+				isIdle = true;
 			} else
 			{
 				SetMove();
@@ -121,7 +125,8 @@ public class PlayerController : MonoBehaviour {
 		isJumping = false;
 		isIdle = true;
 
-		PlayAudioClip(audioIdle2);
+		int a = Random.Range(0, 12);
+		if (a < 4) PlayAudioClip(audioIdle2);
 	}
 
 	void SetMoveForwardState()
