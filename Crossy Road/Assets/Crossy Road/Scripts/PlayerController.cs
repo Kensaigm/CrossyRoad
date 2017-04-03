@@ -15,6 +15,15 @@ public class PlayerController : MonoBehaviour {
 	public ParticleSystem particle = null;
 	public GameObject	  chick = null;
 
+	public AudioClip audioIdle1		= null;
+	public AudioClip audioIdle2		= null;
+	public AudioClip audioHop		= null;
+	public AudioClip audioHit		= null;
+	public AudioClip audioSplash	= null;
+
+	public ParticleSystem splash	= null;
+	public bool partentedToObject	= false;
+
 	private Renderer	  renderer = null;
 	private bool		  isVisable = false;
 
@@ -30,6 +39,8 @@ public class PlayerController : MonoBehaviour {
 				)
 			{
 				CheckIfCanMove();
+
+				PlayAudioClip(audioIdle1);
 			}
 		}
 	}
@@ -100,6 +111,8 @@ public class PlayerController : MonoBehaviour {
 		isMoving = false;
 		isJumping = true;
 		jumpStart = false;
+
+		PlayAudioClip(audioHop);
 		LeanTween.move(gameObject, pos, moveTime).setOnComplete( MoveComplete );
 	}
 
@@ -107,6 +120,8 @@ public class PlayerController : MonoBehaviour {
 	{
 		isJumping = false;
 		isIdle = true;
+
+		PlayAudioClip(audioIdle2);
 	}
 
 	void SetMoveForwardState()
@@ -116,11 +131,28 @@ public class PlayerController : MonoBehaviour {
 
 	public void GotHit()
 	{
-		isIdle = false;
+		// isIdle = false;
 		isDead = true;
 
 		ParticleSystem.EmissionModule em = particle.emission;
 		em.enabled = true;
+
+		PlayAudioClip(audioHit);
+
+		Manager.instance.GameOver();
+	}
+
+	public void GotSoaked()
+	{
+		// isIdle = false;
+		isDead = true;
+
+		ParticleSystem.EmissionModule em = splash.emission;
+		em.enabled = true;
+
+		PlayAudioClip(audioSplash);
+
+		chick.SetActive(false);
 
 		Manager.instance.GameOver();
 	}
@@ -151,5 +183,10 @@ public class PlayerController : MonoBehaviour {
 		CanMove();
 		CanIdle();
 		IsVisable();
+	}
+
+	void PlayAudioClip(AudioClip clip )
+	{
+		GetComponent<AudioSource>().PlayOneShot(clip);
 	}
 }

@@ -46,6 +46,8 @@ public class Mover : MonoBehaviour {
 				Debug.Log("Enter: Parent to me");
 
 				other.transform.parent = transform;
+
+				other.GetComponent<PlayerController>().partentedToObject = true;
 			}
 			if (hitBoxOnTrigger) {
 				Debug.Log("Enter: Gothit. Game over.");
@@ -62,6 +64,7 @@ public class Mover : MonoBehaviour {
 			if (parentOnTrigger) {
 				Debug.Log(" Exit. ");
 				other.transform.parent = null;
+				other.GetComponent<PlayerController>().partentedToObject = false;
 			}
 			if (hitBoxOnTrigger) {
 				Debug.Log(" Exit. But dead, this should not happen.");
